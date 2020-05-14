@@ -99,12 +99,12 @@ public class main {
                         world.spawnEntity(human);
                     }
                 }
-                ToolCore.getLogger().info("Redémarré le serveur maintenant et reconnecté vous/Restart the server now and reconnect you");
-                ToolCore.getLogger().info("Il ne faut pas changer de Chunk/We must not change Chunk");
+                ToolCore.getLogger().info("Restart the server now and reconnect you");
+                ToolCore.getLogger().info("We must not change Chunk");
                 Sponge.getServer().shutdown(Text.of("Redémarré le serveur maintenant et reconnecté vous/Restart the server now and reconnect you"));
             } else {
                 ToolCore.getLogger().info("");
-                ToolCore.getLogger().info("Si le serveur a bien été redémarré/If the server has been restarted:");
+                ToolCore.getLogger().info("If the server has been restarted:");
                 list.forEach(entity -> {
                     Human human = (Human) entity;
 
@@ -119,7 +119,7 @@ public class main {
 
                     HashMap<Integer, ItemStackSnapshot> inventairePositions = new HashMap<Integer, ItemStackSnapshot>();
 
-                    ToolCore.getLogger().info("Premier test erreur:");
+                    ToolCore.getLogger().info("Premier test:");
                     human.get(ToolCore.MAPINVENTORY).ifPresent(stringMapMap -> {
                         if(stringMapMap.containsKey(inventairePositionsKey)) {
                             stringMapMap.get(inventairePositionsKey).forEach((integer, itemStackSnapshot) -> {
@@ -129,7 +129,7 @@ public class main {
                                 inventairePositions.put(integer, inventory.query(QueryOperationTypes.INVENTORY_PROPERTY.of(SlotIndex.of(integer))).peek().get().createSnapshot());
 
                                 if(itemStackSnapshot.get(Keys.DISPLAY_NAME).isPresent()) {
-                                    ToolCore.getLogger().info("Le nom de l'item: '" + itemStackSnapshot.get(Keys.DISPLAY_NAME).get().toPlain() + "' - Test Ok");
+                                    ToolCore.getLogger().info("Item name: '" + itemStackSnapshot.get(Keys.DISPLAY_NAME).get().toPlain() + "'");
                                 } else {
                                     ToolCore.getLogger().info("Erreur !Keys.DISPLAY_NAME: " + itemStackSnapshot.toContainer().toString());
                                 }
@@ -140,12 +140,12 @@ public class main {
                     mapInventoryNew.put(inventairePositionsKey, inventairePositions);
                     human.offer(ToolCore.MAPINVENTORY, mapInventoryNew);
 
-                    ToolCore.getLogger().info("Nouveau test qui cette fois fonctionne:");
+                    ToolCore.getLogger().info("New test that works this time:");
                     human.get(ToolCore.MAPINVENTORY).ifPresent(stringMapMap -> {
                         if(stringMapMap.containsKey(inventairePositionsKey)) {
                             stringMapMap.get(inventairePositionsKey).forEach((integer, itemStackSnapshot) -> {
                                 if(itemStackSnapshot.get(Keys.DISPLAY_NAME).isPresent()) {
-                                    ToolCore.getLogger().info("Le nom de l'item: '" + itemStackSnapshot.get(Keys.DISPLAY_NAME).get().toPlain() + "' - Test Ok");
+                                    ToolCore.getLogger().info("Item name: '" + itemStackSnapshot.get(Keys.DISPLAY_NAME).get().toPlain() + "'");
                                 } else {
                                     ToolCore.getLogger().info("Erreur !Keys.DISPLAY_NAME: " + itemStackSnapshot.toContainer().toString());
                                 }
