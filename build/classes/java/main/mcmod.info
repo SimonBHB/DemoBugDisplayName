@@ -1,0 +1,17 @@
+[
+    {
+        "modid": "demobugdisplayname",
+        "name": "DemoBugDisplayName",
+        "version": "1.0-SNAPSHOT",
+        "description": "Demo Bug Display Name",
+        "authorList": [
+            "SimonBHB"
+        ],
+        "dependencies": [
+            "spongeapi@7.3.0-SNAPSHOT"
+        ],
+        "requiredMods": [
+            "spongeapi@7.3.0-SNAPSHOT"
+        ]
+    }
+]
